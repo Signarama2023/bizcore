@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: bizcore
+    runtime: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+
+      # Basic Auth password for the whole BizCore app.
+      # Set in Render dashboard.
+      - key: ADMIN_PASSWORD
+        sync: false
+
+      # Where BizCore proxies /api/* — your team-calendar Render URL.
+      # No trailing slash. e.g. https://signarama-temecula-calendar.onrender.com
+      - key: TEAM_CALENDAR_URL
+        sync: false
+
+      # Service-account login on team-calendar (must be role=admin there).
+      # The proxy logs in with these on startup, stores the session cookie,
+      # and attaches it to outgoing /api/* requests. Refreshed on 401.
+      - key: TC_USER_EMAIL
+        sync: false
+      - key: TC_USER_PASSWORD
+        sync: false
