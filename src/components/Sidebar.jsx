@@ -18,19 +18,6 @@ export default function Sidebar({ active, onSelect, connections = {}, theme = 'l
   return (
     <nav className="sidebar">
       <div className="sidebar-brand">BizCore</div>
-      {/* Back to the Team Calendar — BizCore is a sub-app served at
-          /bizcore, so this is a plain full-page navigation. */}
-      <a
-        href="/"
-        className="sidebar-back"
-        style={{
-          display: 'block', padding: '8px 12px', margin: '0 0 8px',
-          fontSize: '13px', fontWeight: 600, textDecoration: 'none',
-          color: 'var(--accent2, #60a5fa)',
-        }}
-      >
-        ← Team Calendar
-      </a>
       {NAV.map((item) => (
         <button
           key={item.id}
